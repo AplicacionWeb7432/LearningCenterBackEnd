@@ -14,7 +14,7 @@ public partial class Asset(EAssetType type) : IPublishable
 
     public virtual bool Readable => false;
     
-    public virtual bool Writable => false;
+    public virtual bool Viewable => false;
 
     public void SendToEdit()
     {
@@ -26,7 +26,7 @@ public partial class Asset(EAssetType type) : IPublishable
         Status = EPublishingStatus.ReadyToApproval;
     }
 
-    public void ApproveAndLock()
+    public void ApprovedAndLock()
     {
         Status = EPublishingStatus.ApprovedAndLocked;
     }
@@ -40,6 +40,7 @@ public partial class Asset(EAssetType type) : IPublishable
     {
         Status = EPublishingStatus.ReadyToEdit;
     }
+
 
     public virtual object GetContent()
     {
