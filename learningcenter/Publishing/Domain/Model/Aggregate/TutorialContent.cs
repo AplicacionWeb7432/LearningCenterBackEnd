@@ -1,9 +1,10 @@
 ﻿using learningcenter.Publishing.Domain.Model.Entities;
 using learningcenter.Publishing.Domain.Model.ValueObjects;
+using Microsoft.AspNetCore.Identity;
 
 namespace learningcenter.Publishing.Domain.Model.Aggregate;
 
-public partial class TutorialContent
+public partial class Tutorial : IPublishable
 {
     public ICollection<Asset> Assets { get; }
 
@@ -15,6 +16,14 @@ public partial class TutorialContent
     public bool HasReadableAssets => Assets.Any(asset => asset.Readable);
     
     public bool HasViewableAssets => Assets.Any(asset => asset.Viewable);
+
+    public Tutorial()
+    {
+        Title = string.Empty;
+        Summary = string.Empty;
+        Assets = new List<Asset>();
+        Status = EPublishingStatus.Draft;
+    }
 
     public bool HasAllAssetsWithStatus(EPublishingStatus status)
     {
@@ -33,7 +42,7 @@ public partial class TutorialContent
             Status = EPublishingStatus.ReadyToApproval;
     }
 
-    public void AproveAndLock()
+    public void ApprovedAndLock()
     {
         if (HasAllAssetsWithStatus(EPublishingStatus.ApprovedAndLocked))
             Status = EPublishingStatus.ApprovedAndLocked;

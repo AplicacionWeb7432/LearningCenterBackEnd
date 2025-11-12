@@ -8,6 +8,6 @@ public interface ITutorialRepository : IBaseRepository<Tutorial>
 {
     Task<IEnumerable<Tutorial>> FindByCategoryIdAsync(int CategoryId);
     
-    Task<bool> ExistByTitleAsync(string title);
+    Task<bool> ExistsByTitleAsync(string title);
     
 }

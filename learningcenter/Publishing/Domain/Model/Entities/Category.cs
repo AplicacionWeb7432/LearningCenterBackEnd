@@ -1,4 +1,6 @@
-﻿namespace learningcenter.Publishing.Domain.Model.Entities;
+﻿using learningcenter.Publishing.Domain.Model.Commands;
+
+namespace learningcenter.Publishing.Domain.Model.Entities;
 
 public class Category
 {
@@ -15,4 +17,9 @@ public class Category
         Name = string.Empty;
     }
 
+    public Category(CreateCategoryCommand command)
+    {
+        Name = command.Name;
+        
+    }
 }

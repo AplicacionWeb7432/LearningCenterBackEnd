@@ -34,9 +34,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Publishing\Application\" />
-      <Folder Include="Publishing\Domain\Model\Events\" />
-      <Folder Include="Publishing\Infrastructure\Persistence\EFC\Repositories\" />
       <Folder Include="Publishing\Interfaces\" />
     </ItemGroup>
 
