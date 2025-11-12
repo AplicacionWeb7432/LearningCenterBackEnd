@@ -1,4 +1,4 @@
-﻿using EntityFrameworkCore
+﻿using EntityFrameworkCore;
 using learningcenter.Publishing.Domain.Model.Aggregate;
 using learningcenter.Publishing.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
