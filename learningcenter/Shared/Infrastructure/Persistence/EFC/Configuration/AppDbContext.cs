@@ -1,4 +1,8 @@
 ﻿using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
+using learningcenter.IAM.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using learningcenter.Profiles.Infrastruture.Persistence.EFC.Configuration.Extensions;
+using learningcenter.Publishing.Infrastructure.Persistence.EFC.Configuration.Extensions;
+using learningcenter.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using Microsoft.EntityFrameworkCore;
 namespace learningcenter.Shared.Infrastructure.Persistence.EFC.Configuration;
 
@@ -26,5 +30,20 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         builder.AddCreatedUpdatedInterceptor();
         base.OnConfiguring(builder);
     }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
 
+        // Publishing Context
+        builder.ApplyPublishingConfiguration();
+
+        // Profiles Context
+        builder.ApplyProfilesConfiguration();
+        
+        // IAM Context
+        builder.ApplyIamConfiguration();
+        
+        // General Naming Convention for the database objects
+        builder.UseSnakeCaseNamingConvention();
+    }
 }

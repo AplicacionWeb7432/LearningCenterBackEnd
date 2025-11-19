@@ -1,6 +1,11 @@
-﻿namespace learningcenter.IAM.Domain.Services;
+﻿using learningcenter.IAM.Domain.Model.Aggregates;
+using learningcenter.IAM.Domain.Model.Commands;
 
-public class IUserCommandService
+namespace learningcenter.IAM.Domain.Services;
+
+public interface IUserCommandService
 {
+    Task<(User user, string token )> Handle(SignInCommand command);
     
+    Task Handle(SignUpCommand command);
 }
